@@ -28,7 +28,7 @@ if StockCode == "" or EndDate == "" :
 else:
     data = yf.download(StockCode, start=StartDate, end=EndDate)
     
-    
+data = yf.download(StockCode, start=StartDate, end=EndDate)    
 data['SPV'] = ((data['High'] - data['Low']) / data['Close'])*100
 data['CHG'] = ((data['Close'] - data['Open']) / data['Open'])*100
     
