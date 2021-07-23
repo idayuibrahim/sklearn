@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib import style
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import preprocessing, svm
+from sklearn import preprocessing, svm
 from sklearn.linear_model import LinearRegression
 
 st.header("My First Streamlit App")
