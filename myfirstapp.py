@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import preprocessing, svm
 from sklearn.linear_model import LinearRegression
 
-st.header("My First Streamlit App")
+st.title("My First Streamlit App")
 
 option = st.sidebar.selectbox(
     'Stock Price Data Processing',
@@ -38,7 +38,7 @@ data1.fillna(value=-99999, inplace = True)
 
     
 if option=='Home' or option=="" :
-    st.title("Main Page")
+    st.header("Main Page")
     st.write("This is the main page of the stock price prediction app")
     st.write('Before you continue, please read the [stock market terms and glossary](https://www.nasdaq.com/glossary/a)')
     show = st.checkbox('I have read and understand')
@@ -58,9 +58,8 @@ elif option=='Data Frame':
     st.line_chart(data1.SPV,data1.CHG)
 
 elif option=='Cleaning':
-    data1 = data1 = data[['SPV','Close','CHG','Volume']]
     data1.fillna(value=-99999, inplace = True)
-    st.write(Data1)
+    st.write(data1)
 
 
 else:
