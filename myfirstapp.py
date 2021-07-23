@@ -53,10 +53,21 @@ elif option=='Data Frame':
     st.write('CHG (Change) is percentage difference between Close and Open price') 
     st.write('Data Frame')
     st.write(data1)
-    
+    st.write("""
+## Closing Price
+""")
     st.line_chart(data1.Close)
+    st.write("""
+## Volume
+""")
     st.line_chart(data1.Volume)
+    st.write("""
+## SPV
+""")
     st.line_chart(data1.SPV)
+    st.write("""
+## CHG
+""")
     st.line_chart(data1.CHG)
     
 
