@@ -55,7 +55,8 @@ elif option=='Data Frame':
     st.write(data1)
     st.line_chart(data1.Close)
     st.line_chart(data1.Volume)
-    st.line_chart(data1.SPV,data1.CHG)
+    st.line_chart(data1.SPV)
+    st.line_chart(data1.CHG)
 
 elif option=='Cleaning':
     data1.fillna(value=-99999, inplace = True)
