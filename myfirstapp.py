@@ -20,9 +20,9 @@ option = st.sidebar.selectbox(
      ['Home','Data Frame','Cleaning','Prediction']
 )
     
-StockCode = st.text_input('Please enter the stock code:')
+StockCode = st.text_input('Please enter the stock code:','SPY')
 StartDate = "2015-01-01"
-EndDate = st.text_input('Please enter the end date')
+EndDate = st.text_input('Please enter the end date',str(datetime.datetime.today()).split()[0])
 if StockCode == "" or EndDate == "" :
     st.write("Welcome to my simple stock price app!")
 else:
