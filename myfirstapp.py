@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import preprocessing, svm
 from sklearn.linear_model import LinearRegression
 
-st.title("My First Streamlit App")
+st.title("Stock Price Prediction App")
 
 option = st.sidebar.selectbox(
     'Stock Price Data Processing',
