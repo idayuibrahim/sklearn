@@ -44,9 +44,9 @@ if option=='Home' or option=="" :
     st.write('Before you continue, please read the [stock market terms and glossary](https://www.nasdaq.com/glossary/a)')
     show = st.checkbox('I have read and understand')
     if show:
-        st.write(f"""
-## <font color='red'>Lets start the stock price prediction!</font>, unsafe_allow_html=True
-""")
+        st.write(<font color='red'>"""
+## Lets start the stock price prediction!
+"""</font>, unsafe_allow_html=True)
 elif option=='Data Frame':
     st.write("This is the raw data with the selected features for the analysis")
     data1 = data[['Close','Volume','SPV','CHG']]
