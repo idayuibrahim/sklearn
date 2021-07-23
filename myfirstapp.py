@@ -34,7 +34,7 @@ data['SPV'] = ((data['High'] - data['Low']) / data['Close'])*100
 data['CHG'] = ((data['Close'] - data['Open']) / data['Open'])*100
     
     
-data1 = data[['SPV','Close','CHG','Volume']]
+data1 = data[['Close','Volume','SPV','CHG']]
 data1.fillna(value=-99999, inplace = True)
 
     
@@ -44,11 +44,12 @@ if option=='Home' or option=="" :
     st.write('Before you continue, please read the [stock market terms and glossary](https://www.nasdaq.com/glossary/a)')
     show = st.checkbox('I have read and understand')
     if show:
-        st.write("Lets start the stock price prediction")
-
+        st.write("""
+## Lets start the stock price prediction!
+""")
 elif option=='Data Frame':
     st.write("This is the raw data with the selected features for the analysis")
-    data1 = data[['SPV','Close','CHG','Volume']]
+    data1 = data[['Close','Volume','SPV','CHG']]
     st.write('SPV (Spread Volatility) is differences between High and Low divided by Close price multiplied by 100') 
     st.write('CHG (Change) is percentage difference between Close and Open price') 
     st.write('Data Frame')
