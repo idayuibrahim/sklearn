@@ -1,39 +1,62 @@
 import streamlit as st
-
+import math
 import numpy as np
 import pandas as pd
-import time
+import datetime
 
-st.header("My first Streamlit App")
+import yfinance as yf
+
+import matplotlib.pyplot as plt
+from matplotlib import style
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import preprocessing, svm
+from sklearn.linear_model import LinearRegression
+
+st.header("My First Streamlit App")
 
 option = st.sidebar.selectbox(
-    'Select a mini project',
-     ['line chart','map','T n C','Long Process'])
+    'Stock Price Data Processing',
+     ['Home','Data Frame','Cleaning','Prediction']
+    
+    
+StockCode = st.text_input('Please enter the stock code:')
+StartDate = "2015-01-01"
+EndDate = st.text_input('Please enter the end date')
+if StockCode == "" or EndDate == "" :
+    st.write("Welcome to my simple stock price app!")
+else:
+    data = yf.download(StockCode, start=StartDate, end=EndDate)
+    
+    
+data['SPV'] = ((data['High'] - data['Low']) / data['Close'])*100
+data['CHG'] = ((data['Close'] - data['Open']) / data['Open'])*100
+    
+    
+data1 = data[['SPV','Close','CHG','Volume']]
+data1.fillna(value=-99999, inplace = True)
 
-
-if option=='line chart':
-    chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=['a', 'b', 'c'])
-
-    st.line_chart(chart_data)
-
-elif option=='map':
-    map_data = pd.DataFrame(
-    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
-    columns=['lat', 'lon'])
-
-    st.map(map_data)
-
-elif option=='T n C':
-
-    st.write('Before you continue, please read the [terms and conditions](https://www.gnu.org/licenses/gpl-3.0.en.html)')
-    show = st.checkbox('I agree the terms and conditions')
+    
+if option=='Home' or option=="" :
+    st.title("Main Page")
+    st.write("This is the main page of the stock price prediction app")
+    st.write('Before you continue, please read the [stock market terms and glossary](https://www.nasdaq.com/glossary/a)')
+    show = st.checkbox('I have read and understand')
     if show:
-        st.write(pd.DataFrame({
-        'Intplan': ['yes', 'yes', 'yes', 'no'],
-        'Churn Status': [0, 0, 0, 1]
-        }))
+        st.write("Lets start the stock price prediction")
+
+elif option=='Data Frame':
+    st.write("This is the raw data with the selected features for the analysis")
+    data1 = data1 = data[['SPV','Close','CHG','Volume']]
+    st.write('SPV (Spread Volatility) is differences between High and Low divided by Close price multiplied by 100) 
+    st.write('CHG (Change) is percentage difference between Close and Open price) 
+    st.write('Data Frame')
+    st.write(data1)
+    st.line_chart(data1)
+
+elif option=='Cleaning':
+    data1.fillna(value=-99999, inplace = True)
+    st.write(Data1)
 
 
 else:
