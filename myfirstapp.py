@@ -18,7 +18,7 @@ st.header("My First Streamlit App")
 option = st.sidebar.selectbox(
     'Stock Price Data Processing',
      ['Home','Data Frame','Cleaning','Prediction']
-    
+)
     
 StockCode = st.text_input('Please enter the stock code:')
 StartDate = "2015-01-01"
