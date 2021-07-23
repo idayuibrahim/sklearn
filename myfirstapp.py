@@ -45,8 +45,8 @@ if option=='Home' or option=="" :
     show = st.checkbox('I have read and understand')
     if show:
         st.write("""
-## <font color='red'>Lets start the stock price prediction!
-""</font>, unsafe_allow_html=True")
+## Lets start the stock price prediction!
+""")
 elif option=='Data Frame':
     st.write("This is the raw data with the selected features for the analysis")
     data1 = data[['Close','Volume','SPV','CHG']]
