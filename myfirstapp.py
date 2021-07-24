@@ -83,7 +83,7 @@ else:
     st.write('Prediction Output Length : ')
     st.write((PredictionOutput_Total), 'days ahead. ')
     
-    st.write(" SVR (Support Vector Regression) prediction accuracy : ")
+    st.write(' SVR (Support Vector Regression) prediction accuracy : ')
     X = np.array(data1.drop(['PredictionOutput'],1))
     X = preprocessing.scale(X)
     X_predict = X[-PredictionOutput_Total:]
@@ -100,4 +100,40 @@ else:
     st.write('Prediction output using SVR: ')
     st.write(setPrediction0)
     
+    
+    st.write(' Linear Regression prediction accuracy : ')
+    clf = LinearRegression(n_jobs=-1)
+    clf.fit(X_train, y_train)
+    Confidence2 = clf.score(X_test, y_test)
+    st.write(Confidence2)
+    
+    st.write('Prediction output using Linear Regression: ')
+    setPrediction = clf.predict(X_predict)
+    st.write(setPrediction)
+    st.line_chart(setPrediction)
+    
+    
+    st.write('Choose the highest confidence value')
+    
+    
+    data1('Prediction') = np.nan
+    
+    lastDate = data1.iloc[-1].name
+    
+    lastSecond = lastDate.timestamp()
+    oneDay = 86400
+    nextSecond = lastSecond + oneDay
+    
+    
+    for i in setPrediction :
+        nextDate = datetime.datetime.fromtimestamp(nextSecond)
+        nextSecond += 86400
+        data1.loc[nextDate] = np.nan for _ in range(len(data1.columns)-1)]+[i]
+        data1['Close'].plot()
+        data1['prediction'].plot()
+        plt.legend
+        plt.xlabel('Year')
+        plt.ylabel('Price')
+        plt.title(StockPrice + 'Stock price prediction')
+        legend = plt.show
 
