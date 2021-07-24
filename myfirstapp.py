@@ -79,7 +79,7 @@ elif option=='Cleaning':
 
 else:
     PredictionOutput_Total = int(math.ceil(0.01*len(data1)))
-    data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_Length)
+    data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_Total)
     st.write('Prediction Output Length : ')
     st.write((PredictionOutput_Total), 'days ahead. ')
     
