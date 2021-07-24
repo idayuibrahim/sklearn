@@ -87,7 +87,7 @@ else:
     X = np.array(data1.drop(['PredictionOutput'],1))
     X = preprocessing.scale(X)
     X_predict = X[-PredictionOutput_Total:]
-    X = [:-PredictionOutput_Total]
+    X = X[:-PredictionOutput_Total]
     data1.dropna(inplace=True)
     y = np.array(data1['PredictionOutput'])
     
