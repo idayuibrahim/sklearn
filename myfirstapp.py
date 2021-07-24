@@ -110,6 +110,9 @@ else:
     st.write('Prediction output using Linear Regression: ')
     setPrediction = clf.predict(X_predict)
     st.write(setPrediction)
+    st.write("""
+## Stock price prediction
+""")
     st.line_chart(setPrediction)
     
     
