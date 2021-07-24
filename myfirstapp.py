@@ -78,16 +78,26 @@ elif option=='Cleaning':
 
 
 else:
-    'Starting a long computation...'
-
+    PredictionOutput_Total = int(math.ceil(0.01*len(data1)))
+    data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_Length)
+    st.write('Prediction Output Length : ')
+    st.write((PredictionOutput_Total), 'days ahead. ')
     
-    latest_iteration = st.empty()
-    bar = st.progress(0)
+    st.write(" SVR (Support Vector Regression) prediction accuracy : ")
+    X = np.array(data1.drop(['PredictionOutput'],1))
+    X = preprocessing.scale(X)
+    X_predict = X[-PredictionOutput_Total:]
+    X = [:-PredictionOutput_Total]
+    data1.dropna(inplace=True)
+    y = np.array(data1['PredictionOutput'])
+    
+    X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
+    clf = svm.SVR()
+    clf.fit(X_train,  y_train)
+    Confidence = clf.score(X_test, y_test)
+    st.write(Confidence)
+    setPrediction0 = clf.predict(X_predict)
+    st.write('Prediction output using SVR: ')
+    st.write(setPrediction0)
+    
 
-    for i in range(100):
-   
-        latest_iteration.text(f'Iteration {i+1}')
-        bar.progress(i + 1)
-        time.sleep(0.1)
-
-    '...and now we\'re done!'
