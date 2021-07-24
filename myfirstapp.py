@@ -116,13 +116,7 @@ else:
     st.write('Choose the highest confidence value')
     
     
-    data1('Prediction') = np.nan
     
-    lastDate = data1.iloc[-1].name
-    
-    lastSecond = lastDate.timestamp()
-    oneDay = 86400
-    nextSecond = lastSecond + oneDay
     
     
     
