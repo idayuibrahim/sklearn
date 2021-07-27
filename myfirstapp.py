@@ -77,7 +77,7 @@ elif option=='Cleaning':
     st.write(data1)
 
 
-elif:
+elif option=='SVM & Linear Regression':
     PredictionOutput_length = int(math.ceil(0.01*len(data1)))
     data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_length)
     st.write('Prediction Output Length : ')
