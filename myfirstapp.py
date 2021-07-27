@@ -49,10 +49,10 @@ if option=='Home' or option=="" :
 """)
 elif option=='Data Frame':
     st.write("This is the raw data with the selected features for the analysis")
-    data1 = data[['Close','Volume','SPV','CHG']]
     st.write('SPV (Spread Volatility) is differences between High and Low divided by Close price multiplied by 100') 
     st.write('CHG (Change) is percentage difference between Close and Open price') 
     st.write('Data Frame')
+    data1 = data[['Close','Volume','SPV','CHG']]
     st.write(data1)
     st.write("""
 ## Closing Price
