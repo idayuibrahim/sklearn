@@ -18,7 +18,7 @@ st.title("Stock Price Prediction App")
 
 option = st.sidebar.selectbox(
     'Stock Price Data Processing',
-     ['Home','Data Frame','Cleaning','SVM & Linear Regression','LSTM']
+     ['Home','Data Frame','Cleaning','SVR & Linear Regression','LSTM']
 )
     
 StockCode = st.text_input('Please enter the stock code:','SPY')
@@ -77,7 +77,7 @@ elif option=='Cleaning':
     st.write(data1)
 
 
-elif option=='SVM & Linear Regression':
+elif option=='SVR & Linear Regression':
     PredictionOutput_length = int(math.ceil(0.01*len(data1)))
     data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_length)
     st.write('Prediction Output Length : ')
