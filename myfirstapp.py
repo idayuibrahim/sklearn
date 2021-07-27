@@ -18,7 +18,7 @@ st.title("Stock Price Prediction App")
 
 option = st.sidebar.selectbox(
     'Stock Price Data Processing',
-     ['Home','Data Frame','Cleaning','Prediction']
+     ['Home','Data Frame','Cleaning','SVM & Linear Regression','LSTM']
 )
     
 StockCode = st.text_input('Please enter the stock code:','SPY')
@@ -77,6 +77,48 @@ elif option=='Cleaning':
     st.write(data1)
 
 
+elif:
+    PredictionOutput_length = int(math.ceil(0.01*len(data1)))
+    data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_length)
+    st.write('Prediction Output Length : ')
+    st.write((PredictionOutput_length), 'days ahead. ')
+    
+    st.write(' SVR (Support Vector Regression) prediction accuracy : ')
+    X = np.array(data1.drop(['PredictionOutput'],1))
+    X = preprocessing.scale(X)
+    X_predict = X[-PredictionOutput_length:]
+    X = X[:-PredictionOutput_length]
+    data1.dropna(inplace=True)
+    y = np.array(data1['PredictionOutput'])
+    
+    X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
+    clf = svm.SVR()
+    clf.fit(X_train,  y_train)
+    Confidence = clf.score(X_test, y_test)
+    st.write(Confidence)
+    setPrediction0 = clf.predict(X_predict)
+    st.write('Prediction output using SVR: ')
+    st.write(setPrediction0)
+    
+    
+    st.write(' Linear Regression prediction accuracy : ')
+    clf = LinearRegression(n_jobs=-1)
+    clf.fit(X_train, y_train)
+    Confidence2 = clf.score(X_test, y_test)
+    st.write(Confidence2)
+    
+    st.write('Prediction output using Linear Regression: ')
+    setPrediction = clf.predict(X_predict)
+    st.write(setPrediction)
+    st.write("""
+## Stock price prediction
+""")
+    st.line_chart(setPrediction)
+    
+    
+    st.write('Choose the highest confidence value')
+    
+    
 else:
     PredictionOutput_Total = int(math.ceil(0.01*len(data1)))
     data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_Total)
@@ -117,6 +159,8 @@ else:
     
     
     st.write('Choose the highest confidence value')
+    
+ 
     
     
     
