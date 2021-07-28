@@ -126,7 +126,7 @@ elif option=='SVR & Linear Regression':
     
     time_step = 100
     X_train_list, y_train_list = [], []
-    for i in range(len(train_data)-time_step-1):
+    for i in range(len(X)-time_step-1):
         X_train_list.append(train_data[i:(i+time_step), 0])
         y_train_list.append(train_data[i + time_step, 0])
     X_train, y_train = np.array(X_train_list),np.array(y_train_list)
