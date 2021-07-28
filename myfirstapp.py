@@ -134,11 +134,9 @@ else:
     model.compile(loss='mean_squared_error',optimizer='adam')
     model.fit(X_train,y_train,epochs=100,batch_size=32)
     
-    MSE = math.sqrt(mean_squared_error(y_train,train_predict))
+    MSE = math.sqrt(mean_squared_error(X_test, y_test))
     st.write(MSE)
     
-    train_predict=model.predict(X_train)
-    st.write(train_predict)
     
     
     
