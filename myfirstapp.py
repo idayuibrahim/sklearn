@@ -135,8 +135,8 @@ elif option=='SVR & Linear Regression':
     model.compile(loss='mean_squared_error',optimizer='adam')
     model.fit(X_train,y_train,epochs=100,batch_size=32)
     
-    MSE = math.sqrt(mean_squared_error(X_test, y_test))
-    st.write(MSE)
+    #MSE = math.sqrt(mean_squared_error(X_test, y_test))
+    #st.write(MSE)
     
     st.write('Prediction output using LSTM: ')
     setPrediction = model.predict(X_predict)
@@ -153,8 +153,8 @@ else:
     model.compile(loss='mean_squared_error',optimizer='adam')
     model.fit(X_train,y_train,epochs=100,batch_size=32)
     
-    MSE = math.sqrt(mean_squared_error(X_test, y_test))
-    st.write(MSE)
+    #MSE = math.sqrt(mean_squared_error(X_test, y_test))
+    #st.write(MSE)
     
     st.write('Prediction output using LSTM: ')
     setPrediction = model.predict(X_predict)
