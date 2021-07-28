@@ -127,17 +127,17 @@ elif option=='SVR & Linear Regression':
 else:
     Forecast_Out = int(math.ceil(0.01*len(data1)))
     data2 = data1[['Close']]
-    data2['PredictionOutput'] = data1[['Close']].shift (-Forecast_Out)
+    data2['Prediction'] = data1[['Close']].shift (-Forecast_Out)
     st.write('Prediction Output Length : ')
     st.write((Forecast_Out), 'days ahead. ')
     
     st.write(' SVR (Support Vector Regression) prediction accuracy : ')
-    X = np.array(data2.drop(['PredictionOutput'],1))
+    X = np.array(data2.drop(['Prediction'],1))
     X = preprocessing.scale(X)
     X_predict = X[-Forecast_Out:]
     X = X[:-Forecast_Out]
     data1.dropna(inplace=True)
-    y = np.array(data1['PredictionOutput'])
+    y = np.array(data2['Prediction'])
     
     X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
     clf = svm.SVR()
