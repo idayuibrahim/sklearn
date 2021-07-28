@@ -125,45 +125,23 @@ elif option=='SVR & Linear Regression':
 
         
 else:
-    Forecast_Out = int(math.ceil(0.01*len(data1)))
-    data1['PredictionOutput'] = data['Close'].shift (-Forecast_Out)
-    st.write('Prediction Output Length : ')
-    st.write((Forecast_Out), 'days ahead. ')
+    X_train =X_train.reshape(X_train.shape[0],X_train.shape[1] , 1)
+    model=Sequential()
+    model.add(LSTM(150,return_sequences=True,input_shape=(time_step,1)))
+    model.add(LSTM(100,return_sequences=True))
+    model.add(LSTM(80))
+    model.add(Dense(1))
+    model.compile(loss='mean_squared_error',optimizer='adam')
+    model.fit(X_train,y_train,epochs=100,batch_size=32)
     
-    st.write(' SVR (Support Vector Regression) prediction accuracy : ')
-    X = np.array(data1.drop(['PredictionOutput'],1))
-    X = preprocessing.scale(X)
-    X_predict = X[-Forecast_Out:]
-    X = X[:-Forecast_Out]
-    data1.dropna(inplace=True)
-    y = np.array(data1['PredictionOutput'])
+    MSE = math.sqrt(mean_squared_error(y_train,train_predict))
+    st.write(MSE)
     
-    X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
-    clf = svm.SVR()
-    clf.fit(X_train,  y_train)
-    Confidence = clf.score(X_test, y_test)
-    st.write(Confidence)
-    setPrediction0 = clf.predict(X_predict)
-    st.write('Prediction output using SVR: ')
-    st.write(setPrediction0)
+    train_predict=model.predict(X_train)
+    st.write(train_predict)
     
     
-    st.write(' Linear Regression prediction accuracy : ')
-    clf = LinearRegression(n_jobs=-1)
-    clf.fit(X_train, y_train)
-    Confidence2 = clf.score(X_test, y_test)
-    st.write(Confidence2)
     
-    st.write('Prediction output using Linear Regression: ')
-    setPrediction = clf.predict(X_predict)
-    st.write(setPrediction)
-    st.write("""
-## Stock price prediction
-""")
-    st.line_chart(setPrediction)
-    
-    
-    st.write('Choose the highest confidence value')
     
  
     
