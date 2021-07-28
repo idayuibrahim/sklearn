@@ -123,19 +123,10 @@ elif option=='SVR & Linear Regression':
     
     
     st.write('Choose the highest confidence value')
-    
-    
-    time_step = 100
-    X_train_list, y_train_list = [], []
-    for i in range(len(X)-time_step-1):
-        X_train_list.append(X[i:(i+time_step), 0])
-        y_train_list.append(X[i + time_step, 0])
-    X_train, y_train = np.array(X_train_list),np.array(y_train_list)
-    st.write(X_train.shape)
-    st.write(y_train.shape)
-    
+  
     
     X_train =X_train.reshape(X_train.shape[0],X_train.shape[1] , 1)
+    X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
     model=Sequential()
     model.add(LSTM(150,return_sequences=True,input_shape=(time_step,1)))
     model.add(LSTM(100,return_sequences=True))
@@ -146,10 +137,14 @@ elif option=='SVR & Linear Regression':
     
     MSE = math.sqrt(mean_squared_error(X_test, y_test))
     st.write(MSE)
-
+    
+    st.write('Prediction output using LSTM: ')
+    setPrediction = model.predict(X_predict)
+    st.write(setPrediction)
         
 else:
     X_train =X_train.reshape(X_train.shape[0],X_train.shape[1] , 1)
+    X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
     model=Sequential()
     model.add(LSTM(150,return_sequences=True,input_shape=(time_step,1)))
     model.add(LSTM(100,return_sequences=True))
@@ -161,7 +156,9 @@ else:
     MSE = math.sqrt(mean_squared_error(X_test, y_test))
     st.write(MSE)
     
-    
+    st.write('Prediction output using LSTM: ')
+    setPrediction = model.predict(X_predict)
+    st.write(setPrediction)
     
     
     
