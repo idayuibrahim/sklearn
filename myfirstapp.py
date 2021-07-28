@@ -83,16 +83,16 @@ elif option=='Cleaning':
 
 
 elif option=='SVR & Linear Regression':
-    PredictionOutput_length = int(math.ceil(0.01*len(data1)))
-    data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_length)
+    Forecast_Out = int(math.ceil(0.01*len(data1)))
+    data1['PredictionOutput'] = data['Close'].shift (-Forecast_Out)
     st.write('Prediction Output Length : ')
-    st.write((PredictionOutput_length), 'days ahead. ')
+    st.write((Forecast_Out), 'days ahead. ')
     
     st.write(' SVR (Support Vector Regression) prediction accuracy : ')
     X = np.array(data1.drop(['PredictionOutput'],1))
     X = preprocessing.scale(X)
-    X_predict = X[-PredictionOutput_length:]
-    X = X[:-PredictionOutput_length]
+    X_predict = X[-Forecast_Out:]
+    X = X[:-Forecast_Out]
     data1.dropna(inplace=True)
     y = np.array(data1['PredictionOutput'])
     
@@ -122,8 +122,8 @@ elif option=='SVR & Linear Regression':
     
     
     st.write('Choose the highest confidence value')
-    
-    
+
+        
 else:
     PredictionOutput_length = int(math.ceil(0.01*len(data1)))
     data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_length)
