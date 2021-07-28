@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import preprocessing, svm
 from sklearn.linear_model import LinearRegression
 
-import TensorFlow
+import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import LSTM
