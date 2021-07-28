@@ -141,7 +141,7 @@ else:
     X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
     clf = svm.SVR()
     clf.fit(X_train,  y_train)
-    Confidence = svr.score(X_test, y_test)
+    Confidence = svr_rbf.score(X_test, y_test)
     st.write(Confidence)
     setPrediction0 = clf.predict(X_predict)
     st.write('Prediction output using SVR: ')
