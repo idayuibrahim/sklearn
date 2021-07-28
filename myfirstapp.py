@@ -13,6 +13,7 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing, svm
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
