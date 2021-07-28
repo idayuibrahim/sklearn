@@ -14,6 +14,11 @@ from sklearn.model_selection import train_test_split
 from sklearn import preprocessing, svm
 from sklearn.linear_model import LinearRegression
 
+import TensorFlow
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import LSTM
+
 st.title("Stock Price Prediction App")
 
 option = st.sidebar.selectbox(
@@ -120,16 +125,16 @@ elif option=='SVR & Linear Regression':
     
     
 else:
-    PredictionOutput_Total = int(math.ceil(0.01*len(data1)))
-    data1['PredictionOutput'] = data['Close'].shift (-PredictionOutput_Total)
+    Forecast_Out = int(math.ceil(0.01*len(data1)))
+    data1['PredictionOutput'] = data['Close'].shift (-Forecast_Out)
     st.write('Prediction Output Length : ')
-    st.write((PredictionOutput_Total), 'days ahead. ')
+    st.write((Forecast_Out), 'days ahead. ')
     
     st.write(' SVR (Support Vector Regression) prediction accuracy : ')
     X = np.array(data1.drop(['PredictionOutput'],1))
     X = preprocessing.scale(X)
-    X_predict = X[-PredictionOutput_Total:]
-    X = X[:-PredictionOutput_Total]
+    X_predict = X[-Forecast_Out:]
+    X = X[:-Forecast_Out]
     data1.dropna(inplace=True)
     y = np.array(data1['PredictionOutput'])
     
