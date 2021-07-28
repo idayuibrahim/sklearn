@@ -127,7 +127,7 @@ elif option=='SVR & Linear Regression':
 else:
     Forecast_Out = int(math.ceil(0.01*len(data1)))
     data2 = data1[['Close']]
-    data2['PredictionOutput'] = data1['Close'].shift (-Forecast_Out)
+    data2['PredictionOutput'] = data1[['Close']].shift (-Forecast_Out)
     st.write('Prediction Output Length : ')
     st.write((Forecast_Out), 'days ahead. ')
     
