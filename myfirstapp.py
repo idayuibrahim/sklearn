@@ -25,7 +25,7 @@ st.title("Stock Price Prediction App")
 
 option = st.sidebar.selectbox(
     'Stock Price Data Processing',
-     ['Home','Data Frame','Cleaning','SVR & Linear Regression','LSTM']
+     ['Home','Data Frame','Cleaning','SVR & Linear Regression']
 )
     
 StockCode = st.text_input('Please enter the stock code:','SPY')
@@ -123,51 +123,12 @@ elif option=='SVR & Linear Regression':
     st.write("""
 ## Stock price prediction
 """)
-    st.line_chart(setPrediction)
+    st.line_chart(setPrediction0,setPrediction)
     
     
     st.write('Choose the highest confidence value')
         
-else:
-    Forecast_Out = int(math.ceil(0.01*len(data1)))
-    data1['PredictionOutput'] = data['Close'].shift (-Forecast_Out)
-    st.write('Prediction Output Length : ')
-    st.write((Forecast_Out), 'days ahead. ')
-    
-    st.write(' SVR (Support Vector Regression) prediction accuracy : ')
-    X = np.array(data1.drop(['PredictionOutput'],1))
-    X = preprocessing.scale(X)
-    X_predict = X[-Forecast_Out:]
-    X = X[:-Forecast_Out]
-    data1.dropna(inplace=True)
-    y = np.array(data1['PredictionOutput'])
-    
-    X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
-    clf = svm.SVR()
-    clf.fit(X_train,  y_train)
-    Confidence = clf.score(X_test, y_test)
-    st.write(Confidence)
-    setPrediction0 = clf.predict(X_predict)
-    st.write('Prediction output using SVR: ')
-    st.write(setPrediction0)
-    
-    
-    st.write(' Linear Regression prediction accuracy : ')
-    clf = LinearRegression(n_jobs=-1)
-    clf.fit(X_train, y_train)
-    Confidence2 = clf.score(X_test, y_test)
-    st.write(Confidence2)
-    
-    st.write('Prediction output using Linear Regression: ')
-    setPrediction = clf.predict(X_predict)
-    st.write(setPrediction)
-    st.write("""
-## Stock price prediction
-""")
-    st.line_chart(setPrediction)
-    
-    
-    st.write('Choose the highest confidence value')
+
    
     
     
