@@ -124,7 +124,7 @@ elif option=='SVR & Linear Regression':
 ## Stock price prediction
 """)
     
-     st.line_chart(setPrediction)
+    st.line_chart(setPrediction)
     
 #     predictions = clf
 #     valid = 
