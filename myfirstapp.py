@@ -12,6 +12,7 @@ from matplotlib import style
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing, svm
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
@@ -130,6 +131,11 @@ else:
     test_size=len(close_all)-training_size
     train_data,test_data=close_all[0:training_size,:],close_all[training_size:len(close_all),:1]
     st.write(training_size,test_size)
+    
+    
+    scaler = MinMaxScaler(feature_range = (0, 1))
+    train_data = scaler.fit_transform(train_data)
+    st.write(train_data)
     
 #     X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
 #     model=Sequential()
