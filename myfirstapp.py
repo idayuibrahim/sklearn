@@ -53,8 +53,7 @@ if option=='Home' or option=="" :
     if show:
         st.write("""
 ## Lets start the stock price prediction!
-""
-prepared by Nur Idayu Ibrahim")
+""")
 elif option=='Data Frame':
     st.write("This is the raw data with the selected features for the analysis")
     st.write('SPV (Spread Volatility) is differences between High and Low divided by Close price multiplied by 100') 
