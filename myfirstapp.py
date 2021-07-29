@@ -149,7 +149,7 @@ else:
     X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
     
     model=Sequential()
-    model.add(LSTM(150,return_sequences=True,input_shape=(time_step,1)))
+    model.add(LSTM(150,return_sequences=True,input_shape=(X_train.shape[1],1)))
     model.add(LSTM(100,return_sequences=True))
     model.add(LSTM(80))
     model.add(Dense(1))
