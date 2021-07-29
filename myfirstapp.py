@@ -156,7 +156,7 @@ else:
     model.compile(loss='mean_squared_error',optimizer='adam')
     model.fit(X_train,y_train,epochs=100,batch_size=32)
     
-    MSE = math.sqrt(mean_squared_error(X_test, y_test))
+    MSE = math.sqrt(mean_squared_error(X_train, y_train))
     st.write(MSE)
     
 #     X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
