@@ -126,7 +126,10 @@ elif option=='SVR & Linear Regression':
         
 else:
     close_all = data1.loc[:, ['Close']].values
-    st.write(close_all)
+    training_size=int(len(close_all)*0.8)
+    test_size=len(close_all)-training_size
+    train_data,test_data=close_all[0:training_size,:],close_all[training_size:len(close_all),:1]
+    st.write(training_size,test_size)
     
 #     X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
 #     model=Sequential()
