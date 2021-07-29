@@ -154,7 +154,10 @@ else:
     model.add(LSTM(80))
     model.add(Dense(1))
     model.compile(loss='mean_squared_error',optimizer='adam')
-    st.write(model.summary())
+    model.fit(X_train,y_train,epochs=100,batch_size=32)
+    
+    MSE = math.sqrt(mean_squared_error(X_test, y_test))
+    st.write(MSE)
     
 #     X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
 #     model=Sequential()
