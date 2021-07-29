@@ -135,7 +135,7 @@ elif option=='SVR & Linear Regression':
     plt.ylabel('Close Price')
     plt.plot(data1['close'])
     plt.plot(valid[['Close','Predictions']])
-    plt.legend('Ori', 'Val', 'Prediction'])
+    plt.legend(['Ori', 'Val', 'Prediction'])
     
     
     
