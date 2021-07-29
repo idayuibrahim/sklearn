@@ -48,12 +48,13 @@ data1.fillna(value=-99999, inplace = True)
 if option=='Home' or option=="" :
     st.header("Main Page")
     st.write("This is the main page of the stock price prediction app")
-    st.write('Before you continue, please read the [stock market terms and glossary](https://www.nasdaq.com/glossary/a)')
+    st.write('Before you continue, you may read the [stock market terms and glossary](https://www.nasdaq.com/glossary/a) for better understanding on the indicator used')
     show = st.checkbox('I have read and understand')
     if show:
         st.write("""
 ## Lets start the stock price prediction!
-""")
+""
+prepared by Nur Idayu Ibrahim")
 elif option=='Data Frame':
     st.write("This is the raw data with the selected features for the analysis")
     st.write('SPV (Spread Volatility) is differences between High and Low divided by Close price multiplied by 100') 
@@ -158,18 +159,6 @@ else:
     
     MSE = math.sqrt(mean_squared_error(X_train, y_train))
     st.write(MSE)
-    
-#     X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
-#     model=Sequential()
-#     model.add(LSTM(150,return_sequences=True,input_shape=(100,1)))
-#     model.add(LSTM(100,return_sequences=True))
-#     model.add(LSTM(80,return_sequences=False))
-#     model.add(Dense(1))
-#     model.compile(loss='mean_squared_error',optimizer='adam')
-#     model.fit(X_train,y_train,epochs=100,batch_size=32)
-    
-    #MSE = math.sqrt(mean_squared_error(X_test, y_test))
-    #st.write(MSE)
     
     #st.write('Prediction output using LSTM: ')
     #setPrediction = model.predict(X_predict)
