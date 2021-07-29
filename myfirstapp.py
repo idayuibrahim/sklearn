@@ -146,7 +146,7 @@ else:
     st.write(y_train.shape)
     
     X_train =X_train.reshape(X_train.shape[0],X_train.shape[1] , 1)
-    X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
+    #X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
     
     model=Sequential()
     model.add(LSTM(150,return_sequences=True,input_shape=(X_train.shape[1],1)))
