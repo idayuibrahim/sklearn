@@ -131,11 +131,19 @@ else:
     test_size=len(close_all)-training_size
     train_data,test_data=close_all[0:training_size,:],close_all[training_size:len(close_all),:1]
     st.write(training_size,test_size)
-    
-    
+   
     scaler = MinMaxScaler(feature_range = (0, 1))
     train_data = scaler.fit_transform(train_data)
     st.write(train_data)
+    
+    time_step = 100
+    X_train_list, y_train_list = [], []
+    for i in range(len(train_data)-time_step-1):
+        X_train_list.append(train_data[i:(i+time_step), 0])
+        y_train_list.append(train_data[i + time_step, 0])
+    X_train, y_train = np.array(X_train_list),np.array(y_train_list)
+    st.write(X_train.shape)
+    st.write(y_train.shape)
     
 #     X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
 #     model=Sequential()
