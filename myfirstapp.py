@@ -55,7 +55,7 @@ if option=='Home' or option=="" :
 ## Lets start the stock price prediction!
 """)
         st.write("""
-# Prepared by Nur Idayu Ibrahim
+### Prepared by Nur Idayu Ibrahim
 """)
 elif option=='Data Frame':
     st.write("This is the raw data with the selected features for the analysis")
