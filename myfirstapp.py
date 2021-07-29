@@ -129,15 +129,15 @@ elif option=='SVR & Linear Regression':
     predictions = clf
     valid = data1[X.shape[0]:]
     valid['Predictions'] = predictions
-    plt.figure(figsize=(16,8))
-    plt.title('Model')
-    plt.xlabel('Days')
-    plt.ylabel('Close Price')
-    plt.plot(data1['Close'])
-    plt.plot(valid[['Close','Predictions']])
-    plt.legend(['Ori', 'Val', 'Prediction'])
+    graph = plt.figure(figsize=(16,8))
+    graph = plt.title('Model')
+    graph = plt.xlabel('Days')
+    graph = plt.ylabel('Close Price')
+    graph = plt.plot(data1['Close'])
+    graph = plt.plot(valid[['Close','Predictions']])
+    graph = plt.legend(['Ori', 'Val', 'Prediction'])
     
-    
+    st.line_chart(graph)
     
     
     st.write('Choose the highest confidence value')
