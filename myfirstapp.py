@@ -145,6 +145,17 @@ else:
     st.write(X_train.shape)
     st.write(y_train.shape)
     
+    X_train =X_train.reshape(X_train.shape[0],X_train.shape[1] , 1)
+    X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
+    
+    model=Sequential()
+    model.add(LSTM(150,return_sequences=True,input_shape=(time_step,1)))
+    model.add(LSTM(100,return_sequences=True))
+    model.add(LSTM(80))
+    model.add(Dense(1))
+    model.compile(loss='mean_squared_error',optimizer='adam')
+    st.write(model.summary())
+    
 #     X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
 #     model=Sequential()
 #     model.add(LSTM(150,return_sequences=True,input_shape=(100,1)))
