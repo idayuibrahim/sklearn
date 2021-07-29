@@ -123,7 +123,8 @@ elif option=='SVR & Linear Regression':
     st.write("""
 ## Stock price prediction
 """)
-    st.line_chart('setPrediction0','setPrediction')
+    
+    st.line_chart([setPrediction0],[setPrediction])
     
     
     st.write('Choose the highest confidence value')
