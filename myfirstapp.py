@@ -127,7 +127,7 @@ elif option=='SVR & Linear Regression':
     st.line_chart(setPrediction)
     
     predictions = clf
-    valid = df[X.shape[0]:]
+    valid = data1[X.shape[0]:]
     valid['Predictions'] = predictions
     plt.figure(figsize=(16,8))
     plt.title('Model')
