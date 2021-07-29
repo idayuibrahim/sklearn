@@ -126,26 +126,26 @@ elif option=='SVR & Linear Regression':
     
     st.line_chart(setPrediction)
     
-    data1['Prediction'] = np.nan
+#     data1['Prediction'] = np.nan
     
-    lastDate = data1.iloc[-1].name
+#     lastDate = data1.iloc[-1].name
     
-    lastSecond = lastDate.timestamp()
-    oneDay = 86400
-    nextSecond = lastSecond + oneDay
+#     lastSecond = lastDate.timestamp()
+#     oneDay = 86400
+#     nextSecond = lastSecond + oneDay
 
 
-    for i in setPrediction :
-        nextDate = datetime.datetime.fromtimestamp(nextSecond)
-        nextSecond += 86400
-        data1.loc[nextDate] = np.nan for _ in range(len(data1.columns)-1)]+[i]
-        data1['Close'].plot()
-        data1['Prediction'].plot()
-        plt.legend
-        plt.xlabel('Year')
-        plt.ylabel('Price')
-        plt.title(StockPrice + 'Stock price prediction')
-        legend = plt.show
+#     for i in setPrediction :
+#         nextDate = datetime.datetime.fromtimestamp(nextSecond)
+#         nextSecond += 86400
+#         data1.loc[nextDate] = np.nan for _ in range(len(data1.columns)-1)]+[i]
+#         data1['Close'].plot()
+#         data1['Prediction'].plot()
+#         plt.legend
+#         plt.xlabel('Year')
+#         plt.ylabel('Price')
+#         plt.title(StockPrice + 'Stock price prediction')
+#         legend = plt.show
 
         
 
