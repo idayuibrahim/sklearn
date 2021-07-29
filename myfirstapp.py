@@ -126,21 +126,27 @@ elif option=='SVR & Linear Regression':
     
     st.line_chart(setPrediction)
     
-    predictions = clf
-    valid = data1[X.shape[0]:]
-    valid['Predictions'] = predictions
-    plt.figure(figsize=(16,8))
-    plt.title('Model')
-    plt.xlabel('Days')
-    plt.ylabel('Close Price')
-    plt.plot(data1['Close'])
-    plt.plot(valid[['Close','Predictions']])
-    plt.legend(['Ori', 'Val', 'Prediction'])
+    data1['Prediction'] = np.nan
     
-    st.pyplot(valid[['Close','Predictions']])
+    lastDate = data1.iloc[-1].name
     
-    
-    st.write('Choose the highest confidence value')
+    lastSecond = lastDate.timestamp()
+    oneDay = 86400
+    nextSecond = lastSecond + oneDay
+
+
+for i in setPrediction :
+        nextDate = datetime.datetime.fromtimestamp(nextSecond)
+        nextSecond += 86400
+        data1.loc[nextDate] = np.nan for _ in range(len(data1.columns)-1)]+[i]
+        data1['Close'].plot()
+        data1['Prediction'].plot()
+        plt.legend
+        plt.xlabel('Year')
+        plt.ylabel('Price')
+        plt.title(StockPrice + 'Stock price prediction')
+        legend = plt.show
+
         
 
    
