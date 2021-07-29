@@ -126,8 +126,18 @@ elif option=='SVR & Linear Regression':
     
     st.line_chart(setPrediction)
     
-#     predictions = clf
-#     valid = 
+    predictions = clf
+    valid = df[X.shape[0]:]
+    valid['Predictions'] = predictions
+    plt.figure(figsize=(16,8))
+    plt.title('Model')
+    plt.xlabel('Days')
+    plt.ylabel('Close Price')
+    plt.plot(data1['close'])
+    plt.plot(valid[['Close','Predictions']])
+    plt.legend('Ori', 'Val', 'Prediction'])
+    
+    
     
     
     st.write('Choose the highest confidence value')
