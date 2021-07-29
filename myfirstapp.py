@@ -135,17 +135,17 @@ elif option=='SVR & Linear Regression':
     nextSecond = lastSecond + oneDay
 
 
-for i in setPrediction :
-    nextDate = datetime.datetime.fromtimestamp(nextSecond)
-    nextSecond += 86400
-    data1.loc[nextDate] = np.nan for _ in range(len(data1.columns)-1)]+[i]
-    data1['Close'].plot()
-    data1['Prediction'].plot()
-    plt.legend
-    plt.xlabel('Year')
-    plt.ylabel('Price')
-    plt.title(StockPrice + 'Stock price prediction')
-    legend = plt.show
+    for i in setPrediction :
+        nextDate = datetime.datetime.fromtimestamp(nextSecond)
+        nextSecond += 86400
+        data1.loc[nextDate] = np.nan for _ in range(len(data1.columns)-1)]+[i]
+        data1['Close'].plot()
+        data1['Prediction'].plot()
+        plt.legend
+        plt.xlabel('Year')
+        plt.ylabel('Price')
+        plt.title(StockPrice + 'Stock price prediction')
+        legend = plt.show
 
         
 
