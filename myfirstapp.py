@@ -125,22 +125,24 @@ elif option=='SVR & Linear Regression':
     st.write('Choose the highest confidence value')
         
 else:
-    X_train =X_train.reshape(X_train.shape[0],X_train.shape[1] , 1)
-    X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
-    model=Sequential()
-    model.add(LSTM(150,return_sequences=True,input_shape=(100,1)))
-    model.add(LSTM(100,return_sequences=True))
-    model.add(LSTM(80,return_sequences=False))
-    model.add(Dense(1))
-    model.compile(loss='mean_squared_error',optimizer='adam')
-    model.fit(X_train,y_train,epochs=100,batch_size=32)
+    close_all = data1.loc[:, ['Close']].values
+    st.write(close_all)
+    
+#     X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
+#     model=Sequential()
+#     model.add(LSTM(150,return_sequences=True,input_shape=(100,1)))
+#     model.add(LSTM(100,return_sequences=True))
+#     model.add(LSTM(80,return_sequences=False))
+#     model.add(Dense(1))
+#     model.compile(loss='mean_squared_error',optimizer='adam')
+#     model.fit(X_train,y_train,epochs=100,batch_size=32)
     
     #MSE = math.sqrt(mean_squared_error(X_test, y_test))
     #st.write(MSE)
     
-    st.write('Prediction output using LSTM: ')
-    setPrediction = model.predict(X_predict)
-    st.write(setPrediction)
+    #st.write('Prediction output using LSTM: ')
+    #setPrediction = model.predict(X_predict)
+    #st.write(setPrediction)
     
     
     
